@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Alexandre BM" />
+        <meta name="copyright" content="Alexandre BM" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content=", learning, " />
+
+<meta property="og:title" content="Build using alternative libraries with GCC "/>
+<meta property="og:url" content="/build-using-alternative-libraries-with-gcc.html" />
+<meta property="og:description" content="I’m a debian user, and I like the way it’s stable. For debian stable means really stable, but this has a cost, at the most of the time we don’t have the latest version of a package, which makes debian not really a suitable distribution for development ..." />
+<meta property="og:site_name" content="rednaks&#39; blog" />
+<meta property="og:article:author" content="Alexandre BM" />
+<meta property="og:article:published_time" content="2013-12-27T00:00:00" />
+<meta name="twitter:title" content="Build using alternative libraries with GCC ">
+<meta name="twitter:description" content="I’m a debian user, and I like the way it’s stable. For debian stable means really stable, but this has a cost, at the most of the time we don’t have the latest version of a package, which makes debian not really a suitable distribution for development ...">
+
+        <title>Build using alternative libraries with GCC  · rednaks&#39; blog
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <div class="span1"></div>
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>rednaks' blog</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="/build-using-alternative-libraries-with-gcc.html"> Build using alternative libraries with GCC  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            <p>I’m a debian user, and I like the way it’s stable. For debian stable means really stable, but this has a cost, at the most of the time we don’t have the latest version of a package, which makes debian not really a suitable distribution for development.</p>
+<p>But this is not really important, we can always try to build programs from sources at this level we might have another issue. The latest version of the package may require a later version of a library.
+Let’s take the example of <code>boost</code>.</p>
+<p>The program below uses signals from the <code>boost</code> library. Signals are quite useful, every time a signal is emitted, it will be handled by the function to which it's connected to.</p>
+<div class="highlight"><pre><span class="c1">// main.cpp</span>
+<span class="cp">#include &lt;iostream&gt;</span>
+<span class="cp">#include &lt;boost/signals2.hpp&gt;</span>
+
+<span class="kt">void</span> <span class="nf">mySlot</span><span class="p">(){</span>
+     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;I&#39;m a slot &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">){</span>
+     <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">signal</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">()</span><span class="o">&gt;</span> <span class="n">sig</span><span class="p">;</span>
+     <span class="n">sig</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">mySlot</span><span class="p">);</span>
+     <span class="n">sig</span><span class="p">();</span>
+     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>To build this program we have to install the boost library :</p>
+<div class="highlight"><pre>sudo apt-get install libboost-signals1.49-dev
+</pre></div>
+
+
+<p>The actual version of boost available on debian wheezy (7.3) is : <code>boost-1.49</code>.</p>
+<blockquote>
+<p>Make sure you add the <code>-dev</code> suffix to install the boost library headers.</p>
+</blockquote>
+<p>This command will download and install the package that contains useful files such as headers (<code>.hpp</code> files) and the static and dynamic libraries (respectively <code>.a</code> and <code>.so</code> files).</p>
+<p>The header files will be installed in <code>/usr/include/boost/</code>.</p>
+<p>and the libraries will be in <code>/usr/lib/</code>.</p>
+<p>Now all you have to do is to run your compiler command and tell him that you wish to link with the <code>libboost-signals</code> library :</p>
+<div class="highlight"><pre>gcc main.cpp -o myProgram -lboost-signals
+</pre></div>
+
+
+<p>After translating our program to objects, the final step before the binary become runnable is the linking step, the linker will try to link non user-defined functions with the libraries, so that at run time, our program will find the implementation of theses functions.</p>
+<p>The linker will start to look for the libraries (like <code>libboost-signals</code>) in the lib directories <code>/usr/lib and /lib</code> and link your program.</p>
+<p>You can always check with what libraries your program is linked, with the command <code>ldd</code>, in this case <code>ldd myProgram</code> will return :</p>
+<div class="highlight"><pre>linux-vdso.so.1 <span class="o">=</span>&gt;  <span class="o">(</span>0x00007fffb256f000<span class="o">)</span>
+libboost_signals.so.1.49.0 <span class="o">=</span>&gt; /usr/lib/libboost_signals.so.1.49.0 <span class="o">(</span>0x00007f3d3ef7a000<span class="o">)</span>
+libstdc++.so.6 <span class="o">=</span>&gt; /usr/lib/x86_64-linux-gnu/libstdc++.so.6 <span class="o">(</span>0x00007f3d3ec73000<span class="o">)</span>
+libgcc_s.so.1 <span class="o">=</span>&gt; /lib/x86_64-linux-gnu/libgcc_s.so.1 <span class="o">(</span>0x00007f3d3ea5c000<span class="o">)</span>
+libc.so.6 <span class="o">=</span>&gt; /lib/x86_64-linux-gnu/libc.so.6 <span class="o">(</span>0x00007f3d3e6d2000<span class="o">)</span>
+librt.so.1 <span class="o">=</span>&gt; /lib/x86_64-linux-gnu/librt.so.1 <span class="o">(</span>0x00007f3d3e4ca000<span class="o">)</span>
+libm.so.6 <span class="o">=</span>&gt; /lib/x86_64-linux-gnu/libm.so.6 <span class="o">(</span>0x00007f3d3e247000<span class="o">)</span>
+libpthread.so.0 <span class="o">=</span>&gt; /lib/x86_64-linux-gnu/libpthread.so.0 <span class="o">(</span>0x00007f3d3e02b000<span class="o">)</span>
+/lib64/ld-linux-x86-64.so.2 <span class="o">(</span>0x00007f3d3efbf000<span class="o">)</span>
+</pre></div>
+
+
+<p>We can clearly see that our program is linked with <code>libboost_signals.so.1.49.0</code> wich is located at ̀<code>/usr/lib/libboost_signals.so.1.49.0</code>.</p>
+<p>If it didn't succeed to find in both, it will returns and error <code>undefined reference to ....</code></p>
+<p>But what if I want to use the latest version which is <code>boost-1.55</code> ? </p>
+<p>You can specify the first path where the linker should look for the libraries by using the <code>-L</code> option. </p>
+<p>Let's assume that your new fresh build library is located at <code>/opt/boost_1_55/</code></p>
+<p>The new command will be :</p>
+<div class="highlight"><pre>gcc main.cpp -o myProgram -L/opt/boost_1_55/lib/ -lboost_signals
+</pre></div>
+
+
+<p>The linker will look for the library in <code>/opt/boost_1_55/lib</code> if not it will carry on with the remaining directories mentioned above : and the result of ldd myProgram is now :</p>
+<div class="highlight"><pre><span class="n">linux</span><span class="o">-</span><span class="n">vdso</span><span class="p">.</span><span class="n">so</span><span class="mf">.1</span> <span class="o">=&gt;</span>  <span class="p">(</span><span class="mh">0x00007fffb256f000</span><span class="p">)</span>
+<span class="n">libboost_signals</span><span class="p">.</span><span class="n">so</span><span class="mf">.1.55.0</span> <span class="o">=&gt;</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">boost_1_55</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libboost_signals</span><span class="p">.</span><span class="n">so</span><span class="mf">.1.55.0</span> <span class="p">(</span><span class="mh">0x00007f0592949000</span><span class="p">)</span>
+<span class="n">libstdc</span><span class="o">++</span><span class="p">.</span><span class="n">so</span><span class="mf">.6</span> <span class="o">=&gt;</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="n">libstdc</span><span class="o">++</span><span class="p">.</span><span class="n">so</span><span class="mf">.6</span> <span class="p">(</span><span class="mh">0x00007f3d3ec73000</span><span class="p">)</span>
+<span class="n">libgcc_s</span><span class="p">.</span><span class="n">so</span><span class="mf">.1</span> <span class="o">=&gt;</span> <span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="n">libgcc_s</span><span class="p">.</span><span class="n">so</span><span class="mf">.1</span> <span class="p">(</span><span class="mh">0x00007f3d3ea5c000</span><span class="p">)</span>
+<span class="n">libc</span><span class="p">.</span><span class="n">so</span><span class="mf">.6</span> <span class="o">=&gt;</span> <span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="n">libc</span><span class="p">.</span><span class="n">so</span><span class="mf">.6</span> <span class="p">(</span><span class="mh">0x00007f3d3e6d2000</span><span class="p">)</span>
+<span class="n">librt</span><span class="p">.</span><span class="n">so</span><span class="mf">.1</span> <span class="o">=&gt;</span> <span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="n">librt</span><span class="p">.</span><span class="n">so</span><span class="mf">.1</span> <span class="p">(</span><span class="mh">0x00007f3d3e4ca000</span><span class="p">)</span>
+<span class="n">libm</span><span class="p">.</span><span class="n">so</span><span class="mf">.6</span> <span class="o">=&gt;</span> <span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="n">libm</span><span class="p">.</span><span class="n">so</span><span class="mf">.6</span> <span class="p">(</span><span class="mh">0x00007f3d3e247000</span><span class="p">)</span>
+<span class="n">libpthread</span><span class="p">.</span><span class="n">so</span><span class="mf">.0</span> <span class="o">=&gt;</span> <span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="n">libpthread</span><span class="p">.</span><span class="n">so</span><span class="mf">.0</span> <span class="p">(</span><span class="mh">0x00007f3d3e02b000</span><span class="p">)</span>
+<span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">ld</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86</span><span class="o">-</span><span class="mf">64.</span><span class="n">so</span><span class="mf">.2</span> <span class="p">(</span><span class="mh">0x00007f3d3efbf000</span><span class="p">)</span>
+</pre></div>
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2013-12-27T00:00:00">Dec 27, 2013</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#learning-ref">learning</a>
+<h4>Contact</h4>
+    <a href="https://github.com/rednaks" title="My Github Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-github sidebar-social-links"></i></a>
+    <a href="https://twitter.com/Alekkhan" title="My Twitter Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-twitter sidebar-social-links"></i></a>
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>
