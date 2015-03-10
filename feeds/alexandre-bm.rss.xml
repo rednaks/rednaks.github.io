@@ -48,7 +48,7 @@ python firecam.py 192.168.1.8 &lt;span class="c"&gt;# this is your firefoxOS dev
 &lt;p&gt;&lt;img alt="Firecam clien playing video stream" src="http://i.imgur.com/0jM0Mwx.png" /&gt;&lt;/p&gt;
 &lt;h2&gt;What's next ?&lt;/h2&gt;
 &lt;p&gt;The app is in an experimental stage, right now it's not performant,
-I recorded  fps.&lt;/p&gt;
+I recorded between 2 and 5 frames per second, 2 fps when it's colorful 5 fps with less colors.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Looking for smarter ways to increase performance, actually I'm using
