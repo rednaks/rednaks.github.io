@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>rednaks' blog</title><link href="http://blog.rednaks.tn/" rel="alternate"></link><link href="http://blog.rednaks.tn/feeds/alexandre-bm.atom.xml" rel="self"></link><id>http://blog.rednaks.tn/</id><updated>2015-03-09T00:00:00+01:00</updated><entry><title>Firecam : use FirefoxOS devices as a webcam</title><link href="http://blog.rednaks.tn/firecam-use-firefoxos-devices-as-a-webcam.html" rel="alternate"></link><updated>2015-03-09T00:00:00+01:00</updated><author><name>Alexandre BM</name></author><id>tag:blog.rednaks.tn,2015-03-09:firecam-use-firefoxos-devices-as-a-webcam.html</id><summary type="html">&lt;p&gt;I was working on an opencv project and I have a very bad image quality on my
- laptop's webcam I was looking for an alternative and I remembered that project, droidcam [LINK] 
+ laptop's webcam I was looking for an alternative and I remembered that project, &lt;a href="https://play.google.com/store/apps/details?id=com.dev47apps.droidcam"&gt;droidcam&lt;/a&gt;
  that allows you to use an Anroid device as a webcam.&lt;/p&gt;
 &lt;p&gt;But what about firefoxOS ? after checking on the marketplace I couldn't find any 
   webapp that do the same work as droidcam, so I decided to start an experimental
   project, firecam, a FirefoxOS WebApp so stream video from firefoxOS.&lt;/p&gt;
 &lt;p&gt;The project is splitted into two applications :&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;firecam : WebApp installed on a FirefoxOS device.&lt;/li&gt;
-&lt;li&gt;firecam_client : A linux client that connects to firecam and play the video stream.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rednaks/firecam"&gt;firecam&lt;/a&gt; : WebApp installed on a FirefoxOS device.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rednaks/firecam"&gt;firecam_client&lt;/a&gt; : A linux client that connects to firecam and play the video stream.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Firecam :&lt;/h2&gt;
-&lt;p&gt;Firecam is not yet in the marketplace, it uses a privileged API (TCPSocket) so it must be
+&lt;p&gt;Firecam is not yet in the &lt;a href="https://marketplace.firefox.com/"&gt;marketplace&lt;/a&gt;, it uses a privileged API (&lt;code&gt;TCPSocket&lt;/code&gt;) so it must be
  approved and signed by mozilla first.&lt;/p&gt;
 &lt;p&gt;But in order for developers debug their applications,
  there is no restriction when you install the webapp using WebIDE, except internal APIs.&lt;/p&gt;
-&lt;p&gt;I recommend using the latest version of Firefox for developers that already contains WebIDE.&lt;/p&gt;
+&lt;p&gt;I recommend using the latest version of &lt;a href="https://www.mozilla.org/en-US/firefox/developer/"&gt;Firefox Developer Edition&lt;/a&gt; that already contains WebIDE.&lt;/p&gt;
 &lt;p&gt;First start by cloning the two repositories : &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;git clone --depth&lt;span class="o"&gt;=&lt;/span&gt;1 https://github.com/rednaks/firecam
 
@@ -67,7 +67,7 @@ it not very pretty and a little bit complicated, firecam is much more simple.&lt
 &lt;p&gt;Supporting other Platforms ?&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;I hope you liked it, if you have any suggestions, please open a new issue on github.&lt;/p&gt;</summary><category term="firefoxOS"></category><category term="linux"></category><category term="javascript"></category><category term="python"></category></entry><entry><title>Using Ctrl-Tab to switch between tabs in gnome-terminal</title><link href="http://blog.rednaks.tn/using-ctrl-tab-to-switch-between-tabs-in-gnome-terminal.html" rel="alternate"></link><updated>2014-07-25T15:46:00+02:00</updated><author><name>Alexandre BM</name></author><id>tag:blog.rednaks.tn,2014-07-25:using-ctrl-tab-to-switch-between-tabs-in-gnome-terminal.html</id><summary type="html">&lt;p&gt;If you are like me using &lt;code&gt;Ctrl-Tab&lt;/code&gt; (resp &lt;code&gt;Ctrlt-Shift-Tab&lt;/code&gt;) to switch tabs in Firefox and you find that the default way to switch tabs is harmful, indeed, the default shortcuts are &lt;code&gt;Ctrl-PageUp&lt;/code&gt; (resp &lt;code&gt;Ctrl-PageDown&lt;/code&gt;). The two buttons are so far and you can’t really be fast in switching.&lt;/p&gt;
+&lt;p&gt;I hope you liked it, if you have any suggestions, please open a new issue on &lt;a href="https://github.com/rednaks/firecam/issues"&gt;github&lt;/a&gt;.&lt;/p&gt;</summary><category term="firefoxOS"></category><category term="linux"></category><category term="javascript"></category><category term="python"></category></entry><entry><title>Using Ctrl-Tab to switch between tabs in gnome-terminal</title><link href="http://blog.rednaks.tn/using-ctrl-tab-to-switch-between-tabs-in-gnome-terminal.html" rel="alternate"></link><updated>2014-07-25T15:46:00+02:00</updated><author><name>Alexandre BM</name></author><id>tag:blog.rednaks.tn,2014-07-25:using-ctrl-tab-to-switch-between-tabs-in-gnome-terminal.html</id><summary type="html">&lt;p&gt;If you are like me using &lt;code&gt;Ctrl-Tab&lt;/code&gt; (resp &lt;code&gt;Ctrlt-Shift-Tab&lt;/code&gt;) to switch tabs in Firefox and you find that the default way to switch tabs is harmful, indeed, the default shortcuts are &lt;code&gt;Ctrl-PageUp&lt;/code&gt; (resp &lt;code&gt;Ctrl-PageDown&lt;/code&gt;). The two buttons are so far and you can’t really be fast in switching.&lt;/p&gt;
 &lt;p&gt;The good news is that you can customize it in preferences edition, but the bad news is that the Tab button is not allowed.&lt;/p&gt;
 &lt;p&gt;Gnome developers said that this is a reserved key by &lt;code&gt;GTK&lt;/code&gt;. and this could not be considered as a bug.&lt;/p&gt;
 &lt;p&gt;Well I tried to force the values in the settings database and modified it manually using gsettings. and yes ! It works !&lt;/p&gt;
