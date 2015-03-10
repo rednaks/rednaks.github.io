@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>rednaks' blog</title><link>http://blog.rednaks.tn/</link><description></description><atom:link href="http://blog.rednaks.tn/feeds/alexandre-bm.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 09 Mar 2015 00:00:00 +0100</lastBuildDate><item><title>Firecam : use FirefoxOS devices as a webcam</title><link>http://blog.rednaks.tn/firecam-use-firefoxos-devices-as-a-webcam.html</link><description>&lt;p&gt;I was working on an opencv project and I have a very bad image quality on my
- laptop's webcam I was looking for an alternative and I remembered that project, &lt;a href="https://play.google.com/store/apps/details?id=com.dev47apps.droidcam"&gt;droidcam&lt;/a&gt;
+ laptop's webcam I was looking for an alternative and I remembered that project, droidcam [LINK] 
  that allows you to use an Anroid device as a webcam.&lt;/p&gt;
 &lt;p&gt;But what about firefoxOS ? after checking on the marketplace I couldn't find any 
   webapp that do the same work as droidcam, so I decided to start an experimental
   project, firecam, a FirefoxOS WebApp so stream video from firefoxOS.&lt;/p&gt;
 &lt;p&gt;The project is splitted into two applications :&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/rednaks/firecam"&gt;firecam&lt;/a&gt; : WebApp installed on a FirefoxOS device.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/rednaks/firecam"&gt;firecam_client&lt;/a&gt; : A linux client that connects to firecam and play the video stream.&lt;/li&gt;
+&lt;li&gt;firecam : WebApp installed on a FirefoxOS device.&lt;/li&gt;
+&lt;li&gt;firecam_client : A linux client that connects to firecam and play the video stream.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Firecam :&lt;/h2&gt;
-&lt;p&gt;Firecam is not yet in the &lt;a href="https://marketplace.firefox.com"&gt;marketplace&lt;/a&gt;, it uses a privileged API (&lt;code&gt;TCPSocket&lt;/code&gt;) so it must be
+&lt;p&gt;Firecam is not yet in the marketplace, it uses a privileged API (TCPSocket) so it must be
  approved and signed by mozilla first.&lt;/p&gt;
 &lt;p&gt;But in order for developers debug their applications,
  there is no restriction when you install the webapp using WebIDE, except internal APIs.&lt;/p&gt;
-&lt;p&gt;I recommend using the latest version of &lt;a href="https://www.mozilla.org/en-US/firefox/developer/"&gt;Firefox Developers Edition&lt;/a&gt; that already contains WebIDE.&lt;/p&gt;
+&lt;p&gt;I recommend using the latest version of Firefox for developers that already contains WebIDE.&lt;/p&gt;
 &lt;p&gt;First start by cloning the two repositories : &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;git clone --depth&lt;span class="o"&gt;=&lt;/span&gt;1 https://github.com/rednaks/firecam
 
@@ -24,12 +24,12 @@ git clone --depth&lt;span class="o"&gt;=&lt;/span&gt;1 https://github.com/rednak
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;You can find a great tutorial about how to use WebIDE and install applications on the Mozilla Developer Network website : 
+&lt;p&gt;You can find a great tutorial about how to use WebIDE and install applications on the Mozilla Developer Network website :
 &lt;a href="https://developer.mozilla.org/en-US/docs/Tools/WebIDE"&gt;https://developer.mozilla.org/en-US/docs/Tools/WebIDE&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;After installing the App you will have something like this : &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Firecam before starting server" src="http://i.imgur.com/sGfWmeG.png" /&gt;
-You can already start the streaming server, it will be listening for TCP connections on port 8080.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Firecam after starting server" src="http://i.imgur.com/WUSZd5T.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Firecamm before starting server" src="http://i.imgur.com/sGfWmeG.png" /&gt;&lt;/p&gt;
+&lt;p&gt;You can already start the streaming server, it will be listening for TCP connections on port 8080.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Firecamm after starting server" src="https://i.imgur.com/79LIrSR.png" /&gt;&lt;/p&gt;
 &lt;h2&gt;Firecam Client :&lt;/h2&gt;
 &lt;p&gt;You must already cloned the repo of the client for linux.
 Before running the client there are some dependencies to install :&lt;/p&gt;
@@ -45,7 +45,7 @@ python firecam.py 192.168.1.8 &lt;span class="c"&gt;# this is your firefoxOS dev
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="Linux Client playing the video stream" src="http://i.imgur.com/0jM0Mwx.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Firecam clien playing video stream" src="http://i.imgur.com/0jM0Mwx.png" /&gt;&lt;/p&gt;
 &lt;h2&gt;What's next ?&lt;/h2&gt;
 &lt;p&gt;The app is in an experimental stage, right now it's not performant,
 I recorded  fps.&lt;/p&gt;
@@ -53,7 +53,7 @@ I recorded  fps.&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;Looking for smarter ways to increase performance, actually I'm using
 UserMedia WebAPI, then printing the frames into a canvas and finally send it via
-the TCPSocket synchronously. (Probably exploring the WebRTC API).&lt;/p&gt;
+the &lt;code&gt;TCPSocket&lt;/code&gt; synchronously. (Probably exploring the WebRTC API).&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;I didn't focus on the UI and I'm not so good at that, It might take a while. (but any help is welcome :))&lt;/p&gt;
@@ -67,7 +67,25 @@ it not very pretty and a little bit complicated, firecam is much more simple.&lt
 &lt;p&gt;Supporting other Platforms ?&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;I hope you liked it, if you have any suggestions, please open a new issue on github.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alexandre BM</dc:creator><pubDate>Mon, 09 Mar 2015 00:00:00 +0100</pubDate><guid>tag:blog.rednaks.tn,2015-03-09:firecam-use-firefoxos-devices-as-a-webcam.html</guid><category>firefoxOS</category><category>linux</category><category>javascript</category><category>python</category></item><item><title>Build using alternative libraries with GCC</title><link>http://blog.rednaks.tn/build-using-alternative-libraries-with-gcc.html</link><description>&lt;p&gt;I’m a debian user, and I like the way it’s stable. For debian stable means really stable, but this has a cost, at the most of the time we don’t have the latest version of a package, which makes debian not really a suitable distribution for development.&lt;/p&gt;
+&lt;p&gt;I hope you liked it, if you have any suggestions, please open a new issue on github.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alexandre BM</dc:creator><pubDate>Mon, 09 Mar 2015 00:00:00 +0100</pubDate><guid>tag:blog.rednaks.tn,2015-03-09:firecam-use-firefoxos-devices-as-a-webcam.html</guid><category>firefoxOS</category><category>linux</category><category>javascript</category><category>python</category></item><item><title>Using Ctrl-Tab to switch between tabs in gnome-terminal</title><link>http://blog.rednaks.tn/using-ctrl-tab-to-switch-between-tabs-in-gnome-terminal.html</link><description>&lt;p&gt;If you are like me using &lt;code&gt;Ctrl-Tab&lt;/code&gt; (resp &lt;code&gt;Ctrlt-Shift-Tab&lt;/code&gt;) to switch tabs in Firefox and you find that the default way to switch tabs is harmful, indeed, the default shortcuts are &lt;code&gt;Ctrl-PageUp&lt;/code&gt; (resp &lt;code&gt;Ctrl-PageDown&lt;/code&gt;). The two buttons are so far and you can’t really be fast in switching.&lt;/p&gt;
+&lt;p&gt;The good news is that you can customize it in preferences edition, but the bad news is that the Tab button is not allowed.&lt;/p&gt;
+&lt;p&gt;Gnome developers said that this is a reserved key by &lt;code&gt;GTK&lt;/code&gt;. and this could not be considered as a bug.&lt;/p&gt;
+&lt;p&gt;Well I tried to force the values in the settings database and modified it manually using gsettings. and yes ! It works !&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gsettings &lt;span class="nb"&gt;set  &lt;/span&gt;org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab &lt;span class="s1"&gt;&amp;#39;&amp;lt;Primary&amp;gt;Tab&amp;#39;&lt;/span&gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;gsettings &lt;span class="nb"&gt;set  &lt;/span&gt;org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ prev-tab &lt;span class="s1"&gt;&amp;#39;&amp;lt;Primary&amp;gt;&amp;lt;Shift&amp;gt;Tab&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So I don’t know if gnome developers are aware of that because they keep ignoring binding Tab key.&lt;/p&gt;
+&lt;p&gt;This was a little hack, that I wanted to share with you. If you don't want to bother yourself, there is a good alternative to gnome-terminal which is &lt;a href="https://code.google.com/p/jessies/wiki/Terminator"&gt;Terminator (Terminal Emulator)&lt;/a&gt; with some great additional features.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alexandre BM</dc:creator><pubDate>Fri, 25 Jul 2014 15:46:00 +0200</pubDate><guid>tag:blog.rednaks.tn,2014-07-25:using-ctrl-tab-to-switch-between-tabs-in-gnome-terminal.html</guid><category>linux</category><category>gnome</category><category>gnome-terminal</category><category>shortcut</category><category>hack</category><category>terminator</category></item><item><title>Tracking EME implementation on Firefox</title><link>http://blog.rednaks.tn/tracking-eme-implementation-on-firefox.html</link><description>&lt;p&gt;As you might know, Mozilla officially announced months ago that it will begin to implement the Encrypted Media Extension (EME) HTML5 specification for Firefox, that allows DRM content on video and audio. This wasn't an easy decision, since Mozilla is always trying to keep the web as open as possible.&lt;/p&gt;
+&lt;p&gt;Unlike other browsers, Mozilla decided to not implement directly the component and opted for a third-party plugin implementation running within an opensource sandbox. (more details : https://hacks.mozilla.org/2014/05/reconciling-mozillas-mission-and-w3c-eme/ )&lt;/p&gt;
+&lt;p&gt;So if you are worried about how mozilla is going to implement EME, There is A meta bug on &lt;a href="https://bugzilla.mozilla.org"&gt;bugzilla&lt;/a&gt; used to reference to all bugs related to the spec implementation that you can track.
+(PS: for mozilla a bug can be anything, an issue, a new feature, a discussion ...)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1015800"&gt;[EME][META] Implement Encrypted Media Extensions &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You will find the referenced bugs in the "Depends on" section :&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Meta bug" src="http://i.imgur.com/RqYQsef.png" /&gt;&lt;/p&gt;
+&lt;p&gt;If you want to be notified about any bug updates you can create a bugzilla account, pick a bug on which you are interested in and add yourself to "CC List" and then save the changes&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Subscrive CC list" src="http://i.imgur.com/QhSGxfE.png" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alexandre BM</dc:creator><pubDate>Sat, 12 Jul 2014 00:00:00 +0200</pubDate><guid>tag:blog.rednaks.tn,2014-07-12:tracking-eme-implementation-on-firefox.html</guid><category>encrypted media extention</category><category>eme</category><category>drm</category><category>firefox</category><category>adobe</category><category>HTML5</category><category>mozilla</category></item><item><title>Build using alternative libraries with GCC</title><link>http://blog.rednaks.tn/build-using-alternative-libraries-with-gcc.html</link><description>&lt;p&gt;I’m a debian user, and I like the way it’s stable. For debian stable means really stable, but this has a cost, at the most of the time we don’t have the latest version of a package, which makes debian not really a suitable distribution for development.&lt;/p&gt;
 &lt;p&gt;But this is not really important, we can always try to build programs from sources at this level we might have another issue. The latest version of the package may require a later version of a library.
 Let’s take the example of &lt;code&gt;boost&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;The program below uses signals from the &lt;code&gt;boost&lt;/code&gt; library. Signals are quite useful, every time a signal is emitted, it will be handled by the function to which it's connected to.&lt;/p&gt;
@@ -139,22 +157,4 @@ libpthread.so.0 &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt; /lib/x86_64-linux-g
 &lt;span class="n"&gt;libm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt;&lt;span class="mf"&gt;.6&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;gnu&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;libm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt;&lt;span class="mf"&gt;.6&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mh"&gt;0x00007f3d3e247000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;libpthread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt;&lt;span class="mf"&gt;.0&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;gnu&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;libpthread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt;&lt;span class="mf"&gt;.0&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mh"&gt;0x00007f3d3e02b000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ld&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x86&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;64.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt;&lt;span class="mf"&gt;.2&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mh"&gt;0x00007f3d3efbf000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alexandre BM</dc:creator><pubDate>Fri, 27 Dec 2013 00:00:00 +0100</pubDate><guid>tag:blog.rednaks.tn,2013-12-27:build-using-alternative-libraries-with-gcc.html</guid><category>gcc</category><category>boost</category><category>debian</category><category>c++</category><category>linux</category></item><item><title>Tracking EME implementation on Firefox</title><link>http://blog.rednaks.tn/tracking-eme-implementation-on-firefox.html</link><description>&lt;p&gt;As you might know, Mozilla officially announced months ago that it will begin to implement the Encrypted Media Extension (EME) HTML5 specification for Firefox, that allows DRM content on video and audio. This wasn't an easy decision, since Mozilla is always trying to keep the web as open as possible.&lt;/p&gt;
-&lt;p&gt;Unlike other browsers, Mozilla decided to not implement directly the component and opted for a third-party plugin implementation running within an opensource sandbox. (more details : https://hacks.mozilla.org/2014/05/reconciling-mozillas-mission-and-w3c-eme/ )&lt;/p&gt;
-&lt;p&gt;So if you are worried about how mozilla is going to implement EME, There is A meta bug on &lt;a href="https://bugzilla.mozilla.org"&gt;bugzilla&lt;/a&gt; used to reference to all bugs related to the spec implementation that you can track.
-(PS: for mozilla a bug can be anything, an issue, a new feature, a discussion ...)&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1015800"&gt;[EME][META] Implement Encrypted Media Extensions &lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;You will find the referenced bugs in the "Depends on" section :&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Meta bug" src="http://i.imgur.com/RqYQsef.png" /&gt;&lt;/p&gt;
-&lt;p&gt;If you want to be notified about any bug updates you can create a bugzilla account, pick a bug on which you are interested in and add yourself to "CC List" and then save the changes&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Subscrive CC list" src="http://i.imgur.com/QhSGxfE.png" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alexandre BM</dc:creator><pubDate>Fri, 27 Dec 2013 00:00:00 +0100</pubDate><guid>tag:blog.rednaks.tn,2013-12-27:tracking-eme-implementation-on-firefox.html</guid><category>encrypted media extention</category><category>eme</category><category>drm</category><category>firefox</category><category>adobe</category><category>HTML5</category><category>mozilla</category></item><item><title>Using Ctrl-Tab to switch between tabs in gnome-terminal</title><link>http://blog.rednaks.tn/using-ctrl-tab-to-switch-between-tabs-in-gnome-terminal.html</link><description>&lt;p&gt;If you are like me using &lt;code&gt;Ctrl-Tab&lt;/code&gt; (resp &lt;code&gt;Ctrlt-Shift-Tab&lt;/code&gt;) to switch tabs in Firefox and you find that the default way to switch tabs is harmful, indeed, the default shortcuts are &lt;code&gt;Ctrl-PageUp&lt;/code&gt; (resp &lt;code&gt;Ctrl-PageDown&lt;/code&gt;). The two buttons are so far and you can’t really be fast in switching.&lt;/p&gt;
-&lt;p&gt;The good news is that you can customize it in preferences edition, but the bad news is that the Tab button is not allowed.&lt;/p&gt;
-&lt;p&gt;Gnome developers said that this is a reserved key by &lt;code&gt;GTK&lt;/code&gt;. and this could not be considered as a bug.&lt;/p&gt;
-&lt;p&gt;Well I tried to force the values in the settings database and modified it manually using gsettings. and yes ! It works !&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gsettings &lt;span class="nb"&gt;set  &lt;/span&gt;org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab &lt;span class="s1"&gt;&amp;#39;&amp;lt;Primary&amp;gt;Tab&amp;#39;&lt;/span&gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;gsettings &lt;span class="nb"&gt;set  &lt;/span&gt;org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ prev-tab &lt;span class="s1"&gt;&amp;#39;&amp;lt;Primary&amp;gt;&amp;lt;Shift&amp;gt;Tab&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;So I don’t know if gnome developers are aware of that because they keep ignoring binding Tab key.&lt;/p&gt;
-&lt;p&gt;This was a little hack, that I wanted to share with you. If you don't want to bother yourself, there is a good alternative to gnome-terminal which is &lt;a href="https://code.google.com/p/jessies/wiki/Terminator"&gt;Terminator (Terminal Emulator)&lt;/a&gt; with some great additional features.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alexandre BM</dc:creator><pubDate>Thu, 25 Jul 2013 15:46:00 +0200</pubDate><guid>tag:blog.rednaks.tn,2013-07-25:using-ctrl-tab-to-switch-between-tabs-in-gnome-terminal.html</guid><category>linux</category><category>gnome</category><category>gnome-terminal</category><category>shortcut</category><category>hack</category><category>terminator</category></item></channel></rss>
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alexandre BM</dc:creator><pubDate>Fri, 27 Dec 2013 00:00:00 +0100</pubDate><guid>tag:blog.rednaks.tn,2013-12-27:build-using-alternative-libraries-with-gcc.html</guid><category>gcc</category><category>boost</category><category>debian</category><category>c++</category><category>linux</category></item></channel></rss>
